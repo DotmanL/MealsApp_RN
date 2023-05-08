@@ -8,6 +8,7 @@
       "components/*": ["src/components/*"],
       "screens/*": ["src/screens/*"],
       "interfaces/*": ["src/interfaces/*"],
+      "store/*": ["src/store/*"],
     },
     "forceConsistentCasingInFileNames": true,
     "isolatedModules": true,

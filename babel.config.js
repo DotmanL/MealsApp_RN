@@ -10,7 +10,8 @@ module.exports = function (api) {
             src: "./src",
             components: "./src/components",
             screens: "./src/screens",
-            interfaces: "./src/interfaces"
+            interfaces: "./src/interfaces",
+            store: "./src/store"
           }
         }
       ],

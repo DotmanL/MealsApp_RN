@@ -3,21 +3,15 @@ import { View, Pressable, Text, Image, Platform } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { AppNavigationParameterList } from "src/interfaces/AppNavigationParameterList";
-import MealDetails from "./MealDetails";
+import MealDetails from "../MealDetails";
 
 type Props = {
   id: string;
   title: string;
   imageUrl: string;
-  //   ingredients: string[];
-  //   steps: string[];
   duration: number;
   complexity: string;
   affordability: string;
-  //   isGlutenFree: boolean;
-  //   isVegan: boolean;
-  //   isVegetarian: boolean;
-  //   isLactoseFree: boolean;
 };
 
 function MealItem(props: Props) {

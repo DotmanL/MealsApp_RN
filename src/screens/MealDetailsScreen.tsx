@@ -7,6 +7,8 @@ import MealDetails from "src/components/MealDetails";
 import Subtitle from "src/components/MealDetail/Subititle";
 import List from "src/components/MealDetail/List";
 import IconButton from "src/components/MealDetail/IconButton";
+import { useAppSelector, useAppDispatch } from "src/store/redux/hooks";
+import { addFavorite, removeFavorite } from "src/store/redux/favorites";
 
 type Props = {
   navigation: NavigationProp<AppNavigationParameterList, "MealDetails">;
@@ -15,10 +17,30 @@ type Props = {
 
 function MealDetailsScreen(props: Props) {
   const { navigation, route } = props;
+  const dispatch = useAppDispatch();
+  // Context Logic
+  // const favoriteMealsContext = useContext(FavoritesContext);
+  // const isFavoriteMeal = favoriteMealsContext.ids.includes(mealId);
+
+  // function changeFavoriteStatusHandler() {
+  //   if (isFavoriteMeal) {
+  //     favoriteMealsContext.removeFavorite(mealId);
+  //   } else {
+  //     favoriteMealsContext.addFavorite(mealId);
+  //   }
+  // }
+
+  const favoriteMealIds = useAppSelector((state) => state.favoriteMeals.ids);
   const mealId = route.params.mealId;
 
-  function headerButtonPressHandler() {
-    console.log("pressed");
+  const isFavoriteMeal = favoriteMealIds.includes(mealId);
+
+  function changeFavoriteStatusHandler() {
+    if (isFavoriteMeal) {
+      dispatch(removeFavorite({ id: mealId }));
+    } else {
+      dispatch(addFavorite({ id: mealId }));
+    }
   }
 
   useLayoutEffect(() => {
@@ -26,14 +48,14 @@ function MealDetailsScreen(props: Props) {
       headerRight: () => {
         return (
           <IconButton
-            name="star"
+            name={isFavoriteMeal ? "star" : "star-outline"}
             color="white"
-            onPress={headerButtonPressHandler}
+            onPress={changeFavoriteStatusHandler}
           />
         );
       }
     });
-  }, [navigation, headerButtonPressHandler]);
+  }, [navigation, changeFavoriteStatusHandler]);
 
   const selectedMeal = MEALS.find((meal) => meal.id === mealId);
   if (!selectedMeal) {
