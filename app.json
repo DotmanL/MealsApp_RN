@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "MealsApp",
+    "name": "Ola Recipe Book",
     "slug": "MealsApp",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -16,16 +16,24 @@
       "**/*"
     ],
     "ios": {
+      "buildNumber": "1.0.0",
       "supportsTablet": true
     },
     "android": {
+      "versionCode": 1,
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.dotmanl.MealsApp"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "8d6e74f7-99cc-414d-9123-2c9c1babcf9e"
+      }
     }
   }
 }
